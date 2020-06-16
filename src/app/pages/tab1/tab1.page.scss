@@ -2,3 +2,11 @@
   max-height: 35vh;
   overflow: hidden;
 }
+ion-segment-button {
+  background-color: var( --ion-color-dark ) !important;
+  color: white !important;
+}
+
+.segment-button-checked {
+  color: var( --ion-color-primary ) !important;
+}

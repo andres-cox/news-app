@@ -4,16 +4,26 @@
       News App
     </ion-title>
   </ion-toolbar>
+  <ion-segment scrollable mode="md" color="primary" (ionChange)="changeRegion($event)">
+    <ion-segment-button mode="md" *ngFor="let region of regions" [value]="region">
+      <ion-label class="ion-text-capitalize">{{ region }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-segment #country scrollable mode="md" color="primary" (ionChange)="changeCountry($event)">
+    <ion-segment-button mode="md" *ngFor="let country of countries" [value]="country">
+      <ion-chip color="primary" mode="md">
+        <ion-label class="ion-text-capitalize">{{ country.name }}</ion-label>
+      </ion-chip>
+    </ion-segment-button>
+
+  </ion-segment>
 </ion-header>
 
 <ion-content color="dark">
   <app-news [news]="news"></app-news>
 
   <ion-infinite-scroll threshold="150px" (ionInfinite)="loadData($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="crescent"
-      loadingText="Cargando data..."
-    >
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Loading data...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

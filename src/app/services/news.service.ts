@@ -19,7 +19,10 @@ export class NewsService {
   currentCategory = "";
   categoryPage = 0;
 
-  constructor(private http: HttpClient) {}
+  currentCountry = "";
+  countryPage = 0;
+
+  constructor(private http: HttpClient) { }
 
   private runQuery<T>(query: string) {
     query = apiUlr + query;
@@ -27,11 +30,16 @@ export class NewsService {
     return this.http.get<T>(query, { headers });
   }
 
-  getTopHeadlines() {
-    this.headlinesPage++;
+  getTopHeadlines(country: string) {
+    if (this.currentCategory === country) {
+      this.countryPage++;
+    } else {
+      this.countryPage = 1;
+      this.currentCountry = country;
+    }
 
     return this.runQuery<ResponseTopHeadlines>(
-      `/top-headlines?country=ar&page=${this.headlinesPage}`
+      `/top-headlines?country=${country}&page=${this.headlinesPage}`
     );
   }
 
