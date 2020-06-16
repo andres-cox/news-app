@@ -1,21 +1,20 @@
-<ion-header no-border>
+<ion-header>
   <ion-toolbar color="dark">
     <ion-title>
-      News App
+      News from {{newsCountry}}
     </ion-title>
   </ion-toolbar>
-  <ion-segment scrollable mode="md" color="primary" (ionChange)="changeRegion($event)">
+  <ion-segment #region scrollable mode="md" color="primary" (ionChange)="changeRegion($event)">
     <ion-segment-button mode="md" *ngFor="let region of regions" [value]="region">
       <ion-label class="ion-text-capitalize">{{ region }}</ion-label>
     </ion-segment-button>
   </ion-segment>
   <ion-segment #country scrollable mode="md" color="primary" (ionChange)="changeCountry($event)">
-    <ion-segment-button mode="md" *ngFor="let country of countries" [value]="country">
+    <ion-segment-button class="countries" mode="md" *ngFor="let country of countries" [value]="country">
       <ion-chip color="primary" mode="md">
         <ion-label class="ion-text-capitalize">{{ country.name }}</ion-label>
       </ion-chip>
     </ion-segment-button>
-
   </ion-segment>
 </ion-header>
 
