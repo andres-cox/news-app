@@ -7,7 +7,7 @@ const apiKey = environment.apiKey;
 const apiUlr = environment.apiUlr;
 
 const headers = new HttpHeaders({
-  "X-Api-key": apiKey
+  "x-api-key": apiKey
 });
 
 @Injectable({
@@ -16,7 +16,7 @@ const headers = new HttpHeaders({
 export class NewsService {
   headlinesPage = 0;
 
-  currentCategory = "";
+  currentCategory = 'ar';
   categoryPage = 0;
 
   currentCountry = "";
@@ -39,7 +39,7 @@ export class NewsService {
     }
 
     return this.runQuery<ResponseTopHeadlines>(
-      `/top-headlines?country=${country}&page=${this.headlinesPage}`
+      `/top-headlines?country=${country}&page=${this.headlinesPage}'`
     );
   }
 
@@ -52,7 +52,7 @@ export class NewsService {
     }
 
     return this.runQuery<ResponseTopHeadlines>(
-      `/top-headlines?country=ar&category=${category}&page=${this.categoryPage}`
+      `/top-headlines?country=${this.currentCountry}&category=${category}&page=${this.categoryPage}'`
     );
   }
 }
